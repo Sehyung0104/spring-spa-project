@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+}
+
+#main2 {
+	width: 793px;
+	margin: auto;
+}
+
+#main2 a {
+	text-decoration: none;
+}
+
+#main2 #content2 {
+	min-height: 400px;
+	width: 100%;
+	padding: 30px;
+}
+
+/* 조회 --------------- */
+#main2 #content2 #board2 .frm_search2 {
+    text-align: right;
+}
+
+#main2 #content2 #board2 .title2 {
+    background: #777;
+    color: #fff;
+    padding: 2px;
+    margin: 3px 0;
+    display: flex;
+}
+
+#main2 #content2 #board2 .item2 {
+    display: flex;
+}
+
+#main2 #content2 #board2 .no2 { width:70px; }
+#main2 #content2 #board2 .subject2 {width:300px; flex-grow:12; }
+#main2 #content2 #board2 .id2 { width: 120px; flex-grow:1; }
+#main2 #content2 #board2 .nal2 { width: 90px; flex-grow:1; }
+#main2 #content2 #board2 .hit2 { width: 60px; flex-grow:1; }
+
+#main2 #content2 #board2 .item2:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+/* 상세보기 -------------------------- */
+#board span.attFile {
+    background: #eee;
+    padding: 3px 5px;
+    border-radius: 4px;
+}
+
+#board .frm_view>.doc {
+    min-height: 300px;
+    background: #eee;
+    padding: 14px;
+    margin: 10px 0;
+}

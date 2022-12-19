@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+/* guestbook_select.jsp */
+/* guestbook_insert.jsp */
+#guestbook_list .frm_guestbook_search {
+	display: grid;
+	grid-template-columns: 5fr 1fr;
+	grid-gap: 10px;
+	margin-bottom: 17px;
+}
+
+#guestbook_list .frm_guestbook_search input[type="search"] {
+	text-align: right;
+	font-size: 2rem;
+}
+
+#guestbook_list .frm_guestbook_search input[type="button"] {
+	font-size: 2rem;
+}
+
+#guestbook_list .guestbook_items {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 20px;
+}
+
+#item_insert {
+	margin-bottom: 17px;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+}
+
+.item .frm_css {
+    text-align: center;
+    background-color: #ccc;
+    padding: 8px;
+    border-radius: 5px;
+    width: 385px;
+}
+
+.item .frm_css input[name="id"] {
+	width: 133px;
+}
+
+.item .frm_css textarea {
+	width: 361px;
+    margin-top: 7px;
+    height: 126px;
+}
+
+.item .frm_css .label_pwd {
+	margin-right: 9px;
+}
+
+#pwdZone {
+	display: inline-block;
+	visibility: hidden;
+}
+
+/***** 암호를 입력하는 modal box *****/
+#modal {
+	background-color: rgba(0, 0, 0, .5);
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	display: none;
+}
+
+#modal>#content {
+	width: 325px;
+	margin: 250px auto;
+	padding: 20px;
+	position: relative;
+	background-color: #fff;
+	border-radius: 5px;
+}
+
+#modal>#content #btnClose{
+	position: absolute;
+	right: 7px;
+	top: 25px;
+	font-size: 2em;
+	background-color: transparent;
+	border: 0;
+}
