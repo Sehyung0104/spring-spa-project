@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class FileUploadController {
-	static String path = "C:\\Users\\dkapq\\eclipse-workspace\\SpringSpaProjectNew\\src\\main\\resources\\static\\upload\\";
+	static String path = "C:\\git-2208\\spring-spa-project\\SpringSpaProjectNew2\\src\\main\\resources\\static\\upload\\";
 	
 	@Autowired
 	BoardService service;
@@ -27,18 +27,20 @@ public class FileUploadController {
 		
 		String msg="";
 		
+		System.out.println("아이디 : " + vo.getId());
 		try {
+			
 			
 			// 본문을 저장
 			boolean flag = service.insertR(vo);
+			System.out.println("flag : " + flag);
 			
 			if(flag) {
-					for(MultipartFile m : mul) {
-						if(!m.isEmpty()) {
-							List<AttVo> attList = new ArrayList<AttVo>();
-							
-							attList = fileupload(mul);
-							service.insertAttList(attList);
+				for(MultipartFile m : mul) {
+					if(!m.isEmpty()) {
+						List<AttVo> attList = new ArrayList<AttVo>();
+						attList = fileupload(mul);
+						service.insertAttList(attList);
 					}
 				}
 			}else {

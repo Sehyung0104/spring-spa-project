@@ -1,4 +1,4 @@
-package com.kang.board;
+ package com.kang.board;
 
 import java.io.File;
 import java.util.List;
@@ -34,27 +34,36 @@ public class BoardService {
 		boolean b = true;
 		
 		int cnt = boardMapper.insertR(bVo);
+		System.out.println("cnt : " + cnt);
 		if(cnt < 1) {
 			status.rollbackToSavepoint(savePoint);
 			b=false;
-		}else if(bVo.getAttList().size()>0) {
-			int attCnt = boardMapper.insertAttList(bVo.getAttList());
-			if(attCnt<0) b=false;
+		}else {
+			manager.commit(status);
 		}
-		if(b) manager.commit(status);
-		else {
-			status.rollbackToSavepoint(savePoint);
-			
-			String[] delFiles = new String[bVo.getAttList().size()];
-			for(int i=0; i<bVo.getAttList().size(); i++) {
-				delFiles[i] = bVo.getAttList().get(i).getSysFile();
-			}
-			fileDelete(delFiles);
-		}
+		
+		
+//		else if(bVo.getAttList().size()>0) {
+//			int attCnt = boardMapper.insertAttList(bVo.getAttList());
+//			if(attCnt<0) b=false;
+//			manager.commit(status);
+//		}
+//		//if(b) manager.commit(status);
+//		else {
+//			status.rollbackToSavepoint(savePoint);
+//			
+//			String[] delFiles = new String[bVo.getAttList().size()];
+//			for(int i=0; i<bVo.getAttList().size(); i++) {
+//				delFiles[i] = bVo.getAttList().get(i).getSysFile();
+//			}
+//			fileDelete(delFiles);
+//		}
 		return b;
 	}
 	
 	public void insertAttList(List<AttVo> attList) {
+		status = manager.getTransaction(new DefaultTransactionDefinition());
+		savePoint = status.createSavepoint();
 		int cnt = boardMapper.insertAttList(attList);
 		
 		if(cnt>0) {
